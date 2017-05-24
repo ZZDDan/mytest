@@ -12,12 +12,14 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>4.3.6.RELEASE</version>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -30,9 +32,15 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- apache -->
+	    <dependency>
+	        <groupId>org.apache.commons</groupId>
+	        <artifactId>commons-lang3</artifactId>
+	        <version>3.5</version>
+	    </dependency>
 	</dependencies>
 	<profiles>
-		<profile>
+		<profile><!-- 使用 jdk 7 编译 -->
 			<id>jdk-1.7</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
