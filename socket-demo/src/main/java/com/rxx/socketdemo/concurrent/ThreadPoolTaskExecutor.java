@@ -1,5 +1,7 @@
 package com.rxx.socketdemo.concurrent;
 
+import com.rxx.socketdemo.bean.BaseConstant;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -35,7 +37,7 @@ public class ThreadPoolTaskExecutor {
         Properties properties = new Properties();
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream(new File("D:\\rundata\\idea_workspace\\mytest\\socketdemo\\src\\main\\resources\\socket-demo.properties"));
+            fis = new FileInputStream(new File(BaseConstant.PROP_FILEPATH));
             properties.load(fis);
             corePoolSize = Integer.parseInt(properties.get("corePoolSize") + "");         
             maxPoolSize = Integer.parseInt(properties.get("maxPoolSize") + "");           

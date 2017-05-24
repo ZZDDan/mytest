@@ -10,6 +10,7 @@ public interface BaseConstant {
 
     String CHARSET = "UTF-8";
     String QUIT = "quit";
+    String PROP_FILEPATH = "D:\\rundata\\idea_workspace\\mytest\\socket-demo\\src\\main\\resources\\prop.properties";
     
     /* ===================== MSG ===================== */
     String CLIENT_COUNT_MINUS_MSG = "关闭了一个客户端，客户端连接的数量：";

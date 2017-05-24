@@ -1,5 +1,7 @@
 package com.rxx.socketdemo.socket;
 
+import com.rxx.socketdemo.bean.BaseConstant;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -24,7 +26,7 @@ public class SocketConfig {
         Properties properties = new Properties();
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream(new File("D:\\rundata\\idea_workspace\\mytest\\socketdemo\\src\\main\\resources\\socket-demo.properties"));
+            fis = new FileInputStream(new File(BaseConstant.PROP_FILEPATH));
             properties.load(fis);
             ip = properties.get("ip") + "";
             port = Integer.parseInt(properties.get("port") + "");
