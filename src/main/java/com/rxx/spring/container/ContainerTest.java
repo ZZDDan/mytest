@@ -41,7 +41,6 @@ public class ContainerTest {
 	}
 
 	
-	@SuppressWarnings("resource")
 	@Test
 	public void testExternalConfiguration() {		
 

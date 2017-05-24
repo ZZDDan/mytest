@@ -1,7 +1,5 @@
 package com.rxx.thinkinjava.concurrency;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 //: concurrency/TestBlockingQueues.java
 // {RunByHand}
 import java.util.concurrent.ArrayBlockingQueue;

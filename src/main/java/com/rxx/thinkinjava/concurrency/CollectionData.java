@@ -5,7 +5,10 @@ package com.rxx.thinkinjava.concurrency;
 import java.util.*;
 
 public class CollectionData<T> extends ArrayList<T> {
-	public CollectionData(Generator<T> gen, int quantity) {
+	/**  */
+    private static final long serialVersionUID = 1L;
+
+    public CollectionData(Generator<T> gen, int quantity) {
 		for (int i = 0; i < quantity; i++)
 			add(gen.next());
 	}

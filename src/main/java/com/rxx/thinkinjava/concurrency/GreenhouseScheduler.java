@@ -13,8 +13,10 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class GreenhouseScheduler {
-	private volatile boolean light = false;
-	private volatile boolean water = false;
+	@SuppressWarnings("unused")
+    private volatile boolean light = false;
+	@SuppressWarnings("unused")
+    private volatile boolean water = false;
 	private String thermostat = "Day";
 
 	public synchronized String getThermostat() {

@@ -1,10 +1,16 @@
 package com.rxx.thinkinjava.concurrency;
 
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Random;
 //: concurrency/BankTellerSimulation.java
 // Using queues and multithreading.
 // {Args: 5}
-import java.util.concurrent.*;
-import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 // Read-only objects don't require synchronization:
 class Customer {
@@ -25,7 +31,10 @@ class Customer {
 
 // Teach the customer line to display itself:
 class CustomerLine extends ArrayBlockingQueue<Customer> {
-	public CustomerLine(int maxLineSize) {
+	/**  */
+    private static final long serialVersionUID = 1L;
+
+    public CustomerLine(int maxLineSize) {
 		super(maxLineSize);
 	}
 
@@ -121,7 +130,8 @@ class TellerManager implements Runnable {
 	private PriorityQueue<Teller> workingTellers = new PriorityQueue<Teller>();
 	private Queue<Teller> tellersDoingOtherThings = new LinkedList<Teller>();
 	private int adjustmentPeriod;
-	private static Random rand = new Random(47);
+	@SuppressWarnings("unused")
+    private static Random rand = new Random(47);
 
 	public TellerManager(ExecutorService e, CustomerLine customers, int adjustmentPeriod) {
 		exec = e;

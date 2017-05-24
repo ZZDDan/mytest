@@ -10,7 +10,8 @@ package com.rxx.thinkinjava.concurrency;
 public class InnerRunnable1 {
 
 	private int countDown = 5;
-	private Inner inner;
+	@SuppressWarnings("unused")
+    private Inner inner;
 	
 	private class Inner implements Runnable {
 		

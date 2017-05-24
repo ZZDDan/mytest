@@ -42,6 +42,9 @@ class Toast {
 }
 
 class ToastQueue extends LinkedBlockingQueue<Toast> {
+
+    /**  */
+    private static final long serialVersionUID = 1L;
 }
 
 class Toaster implements Runnable {

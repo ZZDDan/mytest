@@ -9,7 +9,8 @@ package com.rxx.thinkinjava.concurrency;
 public class SimplePrioritys implements Runnable {
 
 	private int countDown = 5;
-	private volatile double d;
+	@SuppressWarnings("unused")
+    private volatile double d;
 	private int priority;
 	
 	public SimplePrioritys(int priority) {

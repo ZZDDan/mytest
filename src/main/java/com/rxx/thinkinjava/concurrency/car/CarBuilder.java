@@ -46,6 +46,9 @@ class Car {
 }
 
 class CarQueue extends LinkedBlockingQueue<Car> {
+
+    /**  */
+    private static final long serialVersionUID = 1L;
 }
 
 class ChassisBuilder implements Runnable {

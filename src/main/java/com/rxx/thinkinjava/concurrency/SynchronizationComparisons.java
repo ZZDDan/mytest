@@ -49,7 +49,8 @@ abstract class Accumulator {
 	}
 
 	private class Reader implements Runnable {
-		private volatile long value;
+		@SuppressWarnings("unused")
+        private volatile long value;
 
 		public void run() {
 			for (long i = 0; i < cycles; i++)

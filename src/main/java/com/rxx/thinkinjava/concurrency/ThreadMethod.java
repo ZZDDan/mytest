@@ -1,7 +1,5 @@
 package com.rxx.thinkinjava.concurrency;
 
-import java.awt.print.Printable;
-
 /**
  * @Title      :ThreadMethod
  * @Description:

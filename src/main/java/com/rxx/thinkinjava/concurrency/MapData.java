@@ -6,7 +6,10 @@ import java.util.LinkedHashMap;
 import com.rxx.thinkinjava.concurrency.util.Pair;
 
 public class MapData<K, V> extends LinkedHashMap<K, V> {
-	// A single Pair Generator:
+	/**  */
+    private static final long serialVersionUID = 1L;
+
+    // A single Pair Generator:
 	public MapData(Generator<Pair<K, V>> gen, int quantity) {
 		for (int i = 0; i < quantity; i++) {
 			Pair<K, V> p = gen.next();

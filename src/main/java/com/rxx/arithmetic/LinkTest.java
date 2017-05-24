@@ -1,7 +1,5 @@
  package com.rxx.arithmetic;
 
-import java.util.Currency;
-
 import org.junit.Test;
 
 /**

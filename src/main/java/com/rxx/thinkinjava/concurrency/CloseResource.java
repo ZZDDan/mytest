@@ -1,10 +1,6 @@
 package com.rxx.thinkinjava.concurrency;
 
 import java.io.InputStream;
-//: concurrency/CloseResource.java
-// Interrupting a blocked task by
-// closing the underlying resource.
-// {RunByHand}
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -14,8 +10,10 @@ import java.util.concurrent.TimeUnit;
 public class CloseResource {
 	public static void main(String[] args) throws Exception {
 		ExecutorService exec = Executors.newCachedThreadPool();
-		ServerSocket server = new ServerSocket(8080);
-		InputStream socketInput = new Socket("localhost", 8080).getInputStream();
+		@SuppressWarnings({ "unused", "resource" })
+        ServerSocket server = new ServerSocket(8080);
+		@SuppressWarnings("resource")
+        InputStream socketInput = new Socket("localhost", 8080).getInputStream();
 		exec.execute(new IOBlocked(socketInput));
 		exec.execute(new IOBlocked(System.in));
 		TimeUnit.MILLISECONDS.sleep(100);
