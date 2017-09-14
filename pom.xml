@@ -13,6 +13,7 @@
 		<module>thinkinjava</module>
 		<module>dubbo-demo</module>
         <module>generator-mybatis</module>
+        <module>webservice</module>
     </modules>
 
 	<properties>
