@@ -5,11 +5,11 @@ import javax.jws.WebService;
 /**
  * Created by zhang on 2017/9/14.
  */
-@WebService(endpointInterface="com.rxx.webservice.IEventMonitor")
-public class EventMonitor implements IEventMonitor {
+@WebService(endpointInterface= "com.rxx.webservice.IEventMonitorService")
+public class EventMonitorService implements IEventMonitorService {
 
     @Override
-    public String queryItems(String extendXml) {
+    public String queryItems() {
         return "<?xml version='1.0' encoding='UTF-8'?>" +
                 "<root>" +
                 " <error_info>" +
