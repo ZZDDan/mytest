@@ -8,3 +8,4 @@
 * socket-demo：Socket BIO NIO AIO 编程
 * thinkinjava：《编程思想》源码
 * generator-mybatis：自动生成代码，可以定制注释、生成equals和hashCode 方法
+* comm

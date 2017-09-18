@@ -1,11 +1,11 @@
-package com.rxx.webservice;
+package com.rxx.webservice.server;
 
 import javax.jws.WebService;
 
 /**
  * Created by zhang on 2017/9/14.
  */
-@WebService(endpointInterface= "com.rxx.webservice.IEventMonitorService")
+@WebService(endpointInterface= "com.rxx.webservice.server.IEventMonitorService")
 public class EventMonitorService implements IEventMonitorService {
 
     @Override

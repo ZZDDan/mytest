@@ -19,6 +19,13 @@
             <artifactId>junit</artifactId>
         </dependency>
 
+        <!-- myself -->
+        <dependency>
+            <groupId>com.rxx.mytest</groupId>
+            <artifactId>common-utils</artifactId>
+        </dependency>
+
+        <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -32,6 +39,7 @@
             <artifactId>spring-web</artifactId>
         </dependency>
 
+        <!-- webservice -->
         <!--<dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-api</artifactId>
@@ -52,6 +60,13 @@
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-ws-security</artifactId>
         </dependency>
+
+        <!-- log -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

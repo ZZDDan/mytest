@@ -1,4 +1,4 @@
-package com.rxx.webservice;
+package com.rxx.webservice.server;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;

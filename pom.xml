@@ -15,6 +15,7 @@
         <module>generator-mybatis</module>
         <module>webservice</module>
 		<module>websocket</module>
+		<module>common-utils</module>
 	</modules>
 
 	<properties>
@@ -31,6 +32,7 @@
 		<cxf.version>3.1.7</cxf.version>
 		<websocket.version>1.1</websocket.version>
 		<fastjson.version>1.1.41</fastjson.version>
+		<dom4j.version>1.6.1</dom4j.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -41,6 +43,14 @@
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
 			</dependency>
+
+			<!-- 自己生产的 jar -->
+			<dependency>
+				<groupId>com.rxx.mytest</groupId>
+				<artifactId>common-utils</artifactId>
+				<version>${mytest.version}</version>
+			</dependency>
+
 			<!-- Spring -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -157,6 +167,13 @@
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
 				<version>${fastjson.version}</version>
+			</dependency>
+
+			<!-- dom4l -->
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>${dom4j.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
