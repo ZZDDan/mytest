@@ -16,7 +16,8 @@
         <module>webservice</module>
 		<module>websocket</module>
 		<module>common-utils</module>
-	</modules>
+        <module>activemq</module>
+    </modules>
 
 	<properties>
 		<mytest.version>0.0.1-SNAPSHOT</mytest.version>
@@ -33,6 +34,8 @@
 		<websocket.version>1.1</websocket.version>
 		<fastjson.version>1.1.41</fastjson.version>
 		<dom4j.version>1.6.1</dom4j.version>
+		<jms.version>1.1-rc4</jms.version>
+		<active.client.version>5.14.5</active.client.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -175,6 +178,29 @@
 				<artifactId>dom4j</artifactId>
 				<version>${dom4j.version}</version>
 			</dependency>
+
+			<!-- activemq -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>geronimo-spec</groupId>
+				<artifactId>geronimo-spec-jms</artifactId>
+				<version>${jms.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-spring</artifactId>
+				<version>${active.client.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-client</artifactId>
+				<version>${active.client.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 	<profiles>

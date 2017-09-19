@@ -80,24 +80,42 @@ public class AttackXmlResult {
         // =====错误信息节点和数据节点的具体明细=====
         Iterator itt = infoEle.elementIterator();
         while (itt.hasNext()) {
-            Element infoDetEle = (Element) itt.next();
-            // "节点名：" + infoDetEle.getName() + "--节点值：" + infoDetEle.getStringValue()
-            //infoMap.put(infoDetEle.getName(), infoDetEle.getStringValue());
-            String gname = infoDetEle.getName();
-            int gindex = name.indexOf("_");
-            // 将下划线字符串转为驼峰字符串
-            gname = "set" + Character.toUpperCase(gname.charAt(0))
-                    + gname.substring(1, gindex)
-                    + Character.toUpperCase(gname.charAt(gindex+1))
-                    + gname.substring(gindex+2, gname.length());
+            getEleSonData(infoObj, itt);
+        }
+    }
 
-            try {
-                MethodUtils.invokeMethod(infoObj, gname, infoDetEle.getStringValue());
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                logger.error("通过反射执行方法失败", e);
-                continue;
-            }
+    private static void getEleSonData(Object infoObj, Iterator itt) {
+        Element infoDetEle = (Element) itt.next();
+        // "节点名：" + infoDetEle.getName() + "--节点值：" + infoDetEle.getStringValue()
+        //infoMap.put(infoDetEle.getName(), infoDetEle.getStringValue());
+        String gname = infoDetEle.getName();
+        int gindex = gname.indexOf("_");
+        int glastIndex = gname.lastIndexOf("_");
 
+
+        if(gindex == -1){
+            getEleSonData(infoObj, infoDetEle.elementIterator());
+            return;
+        }
+
+        // 将下划线字符串转为驼峰字符串
+        gname = "set" + Character.toUpperCase(gname.charAt(0))
+                + gname.substring(1, gindex)
+                + Character.toUpperCase(gname.charAt(gindex+1))
+                + gname.substring(gindex+2, gname.length());
+        if(gindex != glastIndex){
+            glastIndex += 2;
+            gname = gname.substring(0, glastIndex)
+                    + Character.toUpperCase(gname.charAt(glastIndex+1))
+                    + gname.substring(glastIndex+2, gname.length());
+        }
+
+
+        try {
+            MethodUtils.invokeMethod(infoObj, gname, infoDetEle.getStringValue());
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            logger.error("通过反射执行方法失败", e);
+            return;
         }
     }
 }
