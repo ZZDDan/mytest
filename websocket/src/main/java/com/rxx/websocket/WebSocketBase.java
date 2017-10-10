@@ -27,7 +27,6 @@ public abstract class WebSocketBase {
      * 打开连接时调用的方法
      * @param currentSession
      */
-    @OnOpen
     public void onOpen(Session currentSession) {
         if (sessionSet.contains(currentSession) == false) {
             sessionSet.add(currentSession);
@@ -43,7 +42,6 @@ public abstract class WebSocketBase {
      * @param message
      * @param currentSession
      */
-    @OnMessage
     public void onMessage(String message, Session currentSession) {
         logger.info("Server say：Received: " + message);
         try {
@@ -62,7 +60,6 @@ public abstract class WebSocketBase {
      * 关闭连接时调用的方法
      * @param currentSession
      */
-    @OnClose
     public void onClose(Session currentSession) {
         if (sessionSet.contains(currentSession)) {
             sessionSet.remove(currentSession);
@@ -76,7 +73,6 @@ public abstract class WebSocketBase {
      * @param currentSession
      * @param error
      */
-    @OnError
     public void onError(Session currentSession, Throwable error){
 
         logger.info("Server say：Client error");
