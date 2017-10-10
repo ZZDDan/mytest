@@ -8,5 +8,5 @@ import javax.jws.WebService;
  */
 @WebService
 public interface IEventMonitorService {
-    String queryItems();
+    String handleItemByParams(String itemId, String[] params, String extendXml);
 }

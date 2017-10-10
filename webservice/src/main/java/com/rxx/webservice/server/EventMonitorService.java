@@ -9,7 +9,7 @@ import javax.jws.WebService;
 public class EventMonitorService implements IEventMonitorService {
 
     @Override
-    public String queryItems() {
+    public String handleItemByParams(String itemId, String[] params, String extendXml) {
         return "<?xml version='1.0' encoding='UTF-8'?>" +
                 "<root>" +
                 "  <error_info>" +

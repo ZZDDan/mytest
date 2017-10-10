@@ -24,7 +24,7 @@ public class EventMonitorClient {
         factory.setServiceClass(IEventMonitorService.class);
         factory.setAddress("http://localhost:8081/webservice/webservice/eventMonitor");
         IEventMonitorService service = (IEventMonitorService) factory.create();
-        String items = service.queryItems();
+        String items = service.handleItemByParams("1001", null, null);
         System.out.println(items);
     }
 
@@ -37,8 +37,8 @@ public class EventMonitorClient {
         //不依赖服务器端接口来完成调用的，也就是不仅仅能调用Java的接口
         JaxWsDynamicClientFactory clientFactory = JaxWsDynamicClientFactory.newInstance();
         Client client = clientFactory.createClient("http://localhost:8081/webservice/webservice/eventMonitor?wsdl");
-        Object[] items = client.invoke("queryItems");
-//        Object[] result = client.invoke("getUserName", "1001");
+//        Object[] items = client.invoke("handleItemByParams");
+        Object[] items = client.invoke("handleItemByParams", "1001", null, null);
         System.out.println(AttackXmlResult.parseDealResult(String.valueOf(items[0])));
     }
 }
