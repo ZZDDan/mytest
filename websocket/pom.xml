@@ -32,6 +32,8 @@
         <dependency>
             <groupId>javax.websocket</groupId>
             <artifactId>javax.websocket-api</artifactId>
+            <!-- 注意：下面这句话必须加上，否则客户端无法访问服务（似乎是服务没有启动） -->
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
