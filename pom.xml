@@ -17,6 +17,7 @@
 		<module>websocket</module>
 		<module>common-utils</module>
         <module>activemq</module>
+        <module>jdk-resource</module>
     </modules>
 
 	<properties>
