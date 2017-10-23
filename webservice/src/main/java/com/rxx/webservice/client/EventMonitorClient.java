@@ -22,9 +22,9 @@ public class EventMonitorClient {
         // 调用WebService
         JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
         factory.setServiceClass(IEventMonitorService.class);
-        factory.setAddress("http://localhost:8081/webservice/webservice/eventMonitor");
+        factory.setAddress("http://localhost:8081/somcweb/services/queryItems");
         IEventMonitorService service = (IEventMonitorService) factory.create();
-        String items = service.handleItemByParams("1001", null, null);
+        String items = service.queryItems("webpage", null);
         System.out.println(items);
     }
 
@@ -36,9 +36,8 @@ public class EventMonitorClient {
     public void testClient() throws Exception{
         //不依赖服务器端接口来完成调用的，也就是不仅仅能调用Java的接口
         JaxWsDynamicClientFactory clientFactory = JaxWsDynamicClientFactory.newInstance();
-        Client client = clientFactory.createClient("http://localhost:8081/webservice/webservice/eventMonitor?wsdl");
-//        Object[] items = client.invoke("handleItemByParams");
-        Object[] items = client.invoke("handleItemByParams", "1001", null, null);
+        Client client = clientFactory.createClient("http://localhost:8081/somcweb/services/handleItemByParams?wsdl");
+        Object[] items = client.invoke("handleItemByParams", "1001", "dns", "{}", null);
         System.out.println(AttackXmlResult.parseDealResult(String.valueOf(items[0])));
     }
 }

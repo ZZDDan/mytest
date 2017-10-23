@@ -7,6 +7,8 @@
 
     <!--=============== 实现类的bean，需要spring注入 ============================-->
     <!-- 接口名称、访问路径、实现类  -->
-    <jaxws:endpoint id="eventMonitor" address="/eventMonitor" implementor="com.rxx.webservice.server.EventMonitorService"/>
+    <jaxws:endpoint id="queryItems" address="/queryItems" implementor="com.rxx.webservice.server.EventMonitorServiceImpl"/>
+    <jaxws:endpoint id="handleItemByParams" address="/handleItemByParams" implementor="com.rxx.webservice.server.EventMonitorServiceImpl"/>
+    <jaxws:endpoint id="queryTaskResult" address="/queryTaskResult" implementor="com.rxx.webservice.server.EventMonitorServiceImpl"/>
 
 </beans>

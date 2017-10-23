@@ -40,8 +40,8 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CXFServlet</servlet-name>
-        <!--==这个设置很重要，那么我们的webservice的地址就是http://localhost:8080/yourProgramName/webservice/Greeting=== -->
-        <url-pattern>/webservice/*</url-pattern>
+        <!--==这个设置很重要，那么我们的webservice的地址就是http://localhost:8080/yourProgramName/services/funName -->
+        <url-pattern>/services/*</url-pattern>
     </servlet-mapping>
 
 
