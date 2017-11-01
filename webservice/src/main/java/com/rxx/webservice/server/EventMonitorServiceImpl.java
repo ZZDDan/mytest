@@ -40,6 +40,25 @@ public class EventMonitorServiceImpl implements IEventMonitorService {
                     "     </script_content_bak>" +
                     "    </equips>" +
                     "   </item>" +
+                    "   <item>" +
+                    "    <item_id>1234</item_id>" +
+                    "    <item_name>校讯</item_name>" +
+                    "    <item_url>www.xiaoxuntong.com</item_url>" +
+                    "    <approval_user_name>张三,李四</approval_user_name>" +
+                    "    <approval_user_phone>13800000000, 13800000000</approval_user_phone>" +
+                    "    <equips>" +
+                    "     <so_ip>192.168.1.1</so_ip>" +
+                    "     <script_content_normal>" +
+                    "      <![CDATA[脚本内容脚本内容]]>" +
+                    "     </script_content_normal>" +
+                    "     <script_content_recover>" +
+                    "      <![CDATA[脚本内容脚本内容]]>" +
+                    "     </script_content_recover>" +
+                    "     <script_content_bak>" +
+                    "      <![CDATA[脚本内容脚本内容]]>" +
+                    "     </script_content_bak>" +
+                    "    </equips>" +
+                    "   </item>" +
                     "  </page>" +
                     " </data_info>" +
                     "</root>";
@@ -88,17 +107,6 @@ public class EventMonitorServiceImpl implements IEventMonitorService {
                 "  </error_info>" +
                 "  <data_info>" +
                 "    <task_id>12345</task_id>" +
-                "    <task_status>5</task_status>" +
-                "    <task_create_time>2017-01-01 12:00:00</task_create_time>" +
-                "    <task_approval_time>2017-01-01 12:02:00</task_approval_time>" +
-                "    <result_status>2</result_status>" +
-                "    <result_create_time>2017-01-01 12:02:00</result_create_time>" +
-                "    <script_content>" +
-                "      <![CDATA[脚本内容脚本内容]]>" +
-                "    </script_content>" +
-                "    <result_content>" +
-                "      <![CDATA[执行结果内容]]>" +
-                "    </result_content>" +
                 "  </data_info>" +
                 "</root>";
     }

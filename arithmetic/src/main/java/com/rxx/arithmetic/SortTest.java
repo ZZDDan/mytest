@@ -12,10 +12,80 @@ import org.junit.Test;
  */
 public class SortTest {
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
+	@Test
+	public void tearHeapSorting() throws Exception {
+		int[] arr = {14,60,212,12,5,8};
+		System.out.println("排序前：" + printArr(arr));
+		heapSorting(arr, arr.length);
+		System.out.println("排序后：" + printArr(arr));
 	}
-	
+
+	/**
+	 * 堆排序算法
+	 * @param arr
+	 * @param length
+	 * @return
+	 */
+	private void heapSorting(int[] arr, int length) {
+		// 初始化堆
+		buildingHeap(arr, length);
+		// 从最后一个元素开始对序列进行调整
+		for(int i = length - 1; i > 0; --i){
+			// 交换堆顶元素arr[0]和堆中最后一个元素
+			int tmp = arr[0];
+			arr[0] = arr[i];
+			arr[i] = tmp;
+			// 每次交换堆顶元素和堆中的最后一个元素之后，都要对堆进行调整
+			heapAdjust(arr, 0, i);
+		}
+	}
+
+	/**
+	 * 已知H[s…m]除了H[s] 外均满足堆的定义
+	 * 调整H[s],使其成为大顶堆.即将对第s个结点为根的子树筛选,
+	 * @param arr 待调整的堆数组
+	 * @param i 待调整的数组元素的位置
+	 * @param length 数组的长度
+	 */
+	private void heapAdjust(int[] arr, int i, int length) {
+		int tmp = arr[i];
+		//左孩子结点的位置。(i+1 为当前调整结点的右孩子结点的位置)
+		int child = 2 * i + 1;
+		while (child < length){
+			// 如果右孩子大于左孩子(找到比当前待调整结点大的孩子结点)
+			if(child + 1 < length && arr[child] < arr[child + 1]){
+				child ++;
+			}
+
+			// 如果较大的子结点大于父结点
+			if(arr[i] < arr[child]){
+				// 那么把较大的子结点往上移动，替换它的父结点
+				arr[i] = arr[child];
+				// 重新设置s ,即待调整的下一个结点的位置
+				i = child;
+				child = 2 * i + 1;
+			}
+			// 如果当前待调整结点大于它的左右孩子，则不需要调整，直接退出
+			else {
+				break;
+			}
+			// 当前待调整的结点放到比其大的孩子结点位置上
+			arr[i] = tmp;
+		}
+	}
+
+	/**
+	 * 初始堆进行调整
+	 * 将arr[0..length-1]建成堆
+	 * 调整完之后第一个元素是序列的最小的元素
+	 */
+	private void buildingHeap(int[] arr, int length) {
+		//最后一个有孩子的节点的位置 i=  (length -1) / 2
+		for (int i = (length - 1) / 2; i >= 0; i--) {
+			heapAdjust(arr, i, length);
+		}
+	}
+
 	@Test
 	public void testRadixSort(){
 		int[] arr = {14,60,212,12,5,8};

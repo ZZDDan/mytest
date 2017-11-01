@@ -23,6 +23,7 @@ public class HelloSender {
         ApplicationContext applicationContext = new FileSystemXmlApplicationContext("classpath:applicationContext-ActiveMQ.xml");
         JmsTemplate template = (JmsTemplate) applicationContext.getBean("jmsTemplate");
         template.send(new MessageCreator() {
+            @Override
             public Message createMessage(Session session) throws JMSException {
                 return session.createTextMessage("发送消息：Hello ActiveMQ Text Message2！");
             }
