@@ -27,17 +27,9 @@ public class EventMonitorClientTest {
     public void testClientByAxis(){
 
         // webservice地址
-        String operationName = "handleService";
-        invokeWS(operationName, "1", "2", "3", "4");
-
-    }
-    @Test
-    public void testClientByAxis2(){
-
-        // webservice地址
-        String operationName = "sayHelloWorldFrom";
-        invokeWS(operationName, "1");
-
+        System.out.println("queryItems：" + invokeWS("queryItems", "webpage", null));
+        System.out.println("handleItemByParams：" + invokeWS("handleItemByParams", "1", "2", "3", null));
+        System.out.println("queryTaskResult：" + invokeWS("queryTaskResult", "1", null));
     }
 
     /**
@@ -61,7 +53,6 @@ public class EventMonitorClientTest {
             call.removeAllParameters();
             // 创建连接
             result = (String) call.invoke(parameter);
-            System.out.println(result);
         } catch (ServiceException | MalformedURLException | RemoteException e) {
             System.out.println("访问 ws 接口失败： " + operationName);
             e.printStackTrace();
