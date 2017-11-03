@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://example" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://example" xmlns:intf="http://example" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://example" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="itemId" type="xsd:string"/>
+   <element name="params">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="extendXml" type="xsd:string"/>
+   <element name="handleItemByParamsReturn" type="xsd:string"/>
+   <element name="extendXml1" type="xsd:string"/>
+   <element name="queryItemsReturn" type="xsd:string"/>
+   <element name="taskId" type="xsd:string"/>
+   <element name="extendXml2" type="xsd:string"/>
+   <element name="queryTaskResultReturn" type="xsd:string"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="handleItemByParamsRequest">
+
+      <wsdl:part element="impl:itemId" name="itemId"/>
+
+      <wsdl:part element="impl:params" name="params"/>
+
+      <wsdl:part element="impl:extendXml" name="extendXml"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="queryItemsRequest">
+
+      <wsdl:part element="impl:extendXml1" name="extendXml"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="queryTaskResultRequest">
+
+      <wsdl:part element="impl:taskId" name="taskId"/>
+
+      <wsdl:part element="impl:extendXml2" name="extendXml"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="handleItemByParamsResponse">
+
+      <wsdl:part element="impl:handleItemByParamsReturn" name="handleItemByParamsReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="queryTaskResultResponse">
+
+      <wsdl:part element="impl:queryTaskResultReturn" name="queryTaskResultReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="queryItemsResponse">
+
+      <wsdl:part element="impl:queryItemsReturn" name="queryItemsReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="TianJinSomc">
+
+      <wsdl:operation name="handleItemByParams" parameterOrder="itemId params extendXml">
+
+         <wsdl:input message="impl:handleItemByParamsRequest" name="handleItemByParamsRequest"/>
+
+         <wsdl:output message="impl:handleItemByParamsResponse" name="handleItemByParamsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="queryItems" parameterOrder="extendXml">
+
+         <wsdl:input message="impl:queryItemsRequest" name="queryItemsRequest"/>
+
+         <wsdl:output message="impl:queryItemsResponse" name="queryItemsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="queryTaskResult" parameterOrder="taskId extendXml">
+
+         <wsdl:input message="impl:queryTaskResultRequest" name="queryTaskResultRequest"/>
+
+         <wsdl:output message="impl:queryTaskResultResponse" name="queryTaskResultResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="handleServiceTJSoapBinding" type="impl:TianJinSomc">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="handleItemByParams">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="handleItemByParamsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="handleItemByParamsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="queryItems">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="queryItemsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="queryItemsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="queryTaskResult">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="queryTaskResultRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="queryTaskResultResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="TianJinSomcService">
+
+      <wsdl:port binding="impl:handleServiceTJSoapBinding" name="handleServiceTJ">
+
+         <wsdlsoap:address location="http://localhost:8082/somcweb/services/handleServiceTJ"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
