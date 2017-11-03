@@ -22,6 +22,10 @@
         <!-- 类中允许访问的方法 -->
         <parameter name="allowedMethod" value="*"></parameter>
     </service>
+    <service name="handleServiceTJ" provider="java:RPC">
+        <parameter name="className" value="example.TianJinSomc"/>
+        <parameter name="allowedMethod" value="*"/>
+    </service>
 
     <!-- 指定处理器 -->
     <transport name="http">

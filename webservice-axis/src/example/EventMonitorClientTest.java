@@ -26,10 +26,17 @@ public class EventMonitorClientTest {
     @Test
     public void testClientByAxis(){
 
+        String endpoint = "http://localhost:8082/somcweb/services/handleService?wsdl";
+        String endpointTJ = "http://localhost:8082/somcweb/services/handleServiceTJ?wsdl";
         // webservice地址
-        System.out.println("queryItems：" + invokeWS("queryItems", "webpage", null));
-        System.out.println("handleItemByParams：" + invokeWS("handleItemByParams", "1", "2", "3", null));
-        System.out.println("queryTaskResult：" + invokeWS("queryTaskResult", "1", null));
+        System.out.println("HB-queryItems：" + invokeWS(endpoint, "queryItems", "webpage", null));
+        System.out.println("HB-handleItemByParams：" + invokeWS(endpoint, "handleItemByParams", "1", "2", "3", null));
+        System.out.println("HB-queryTaskResult：" + invokeWS(endpoint, "queryTaskResult", "1", null));
+
+        // webservice地址
+        System.out.println("TJ-queryItems：" + invokeWS(endpointTJ, "queryItems", null));
+        System.out.println("TJ-handleItemByParams：" + invokeWS(endpointTJ, "handleItemByParams", "1", new String[]{"192.168.1.2", "8080"}, null));
+        System.out.println("TJ-queryTaskResult：" + invokeWS(endpointTJ, "queryTaskResult", "1", null));
     }
 
     /**
@@ -38,10 +45,9 @@ public class EventMonitorClientTest {
      * @param parameter 参数列表
      * @return
      */
-    public static Object invokeWS(String operationName, String... parameter){
+    public static Object invokeWS(String endpoint, String operationName, Object... parameter){
         String result = null;
 
-        String endpoint = "http://localhost:8082/somcweb/services/handleService?wsdl";
         // 直接引用远程的wsdl文件
         Service service = new Service();
         Call call;
