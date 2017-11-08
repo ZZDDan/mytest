@@ -9,88 +9,150 @@ package example;
 public class TianJinSomc {
 
     public String queryItems(String extendXml) {
-        return "<?xml version='1.0' encoding='UTF-8'?>" +
+        return "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+                "" +
                 "<root>" +
-                " <error_info>" +
-                "  <error_code>1000</error_code>" +
-                "  <error_desc>错误描述错误描述</error_desc>" +
-                " </error_info>" +
-                " <data_info>" +
-                "  <page>" +
-                "   <item>" +
-                "    <item_id>1231</item_id>" +
-                "    <item_name>网页篡改1</item_name>" +
-                "    <approval_user_name>张三</approval_user_name>" +
-                "    <approval_user_phone>13800000000</approval_user_phone>" +
-                "    <so_ip>192.168.1.1</so_ip>" +
-                "    <script_content>" +
-                "     <![CDATA[脚本内容脚本内容]]>" +
-                "    </script_content>" +
-                "   </item>" +
-                "   <item>" +
-                "    <item_id>1232</item_id>" +
-                "    <item_name>网页篡改2</item_name>" +
-                "    <approval_user_name>张三</approval_user_name>" +
-                "    <approval_user_phone>13800000000</approval_user_phone>" +
-                "    <so_ip>192.168.1.1</so_ip>" +
-                "    <script_content>" +
-                "     <![CDATA[脚本内容脚本内容]]>" +
-                "    </script_content>" +
-                "   </item>" +
-                "  </page>" +
-                "  <cdn>" +
-                "   <item>" +
-                "    <item_id>1233</item_id>" +
-                "    <item_name>CNDXX</item_name>" +
-                "    <approval_user_name>张三</approval_user_name>" +
-                "    <approval_user_phone>13800000000</approval_user_phone>" +
-                "    <so_ip>192.168.1.1</so_ip>" +
-                "    <script_content>" +
-                "     <![CDATA[脚本内容脚本内容]]>" +
-                "    </script_content>" +
-                "   </item>" +
-                "  </cdn>" +
-                "  <ddos>" +
-                "   <item>" +
-                "    <item_id>1234</item_id>" +
-                "    <item_name>DDOS工具</item_name>" +
-                "    <approval_user_name>张三</approval_user_name>" +
-                "    <approval_user_phone>13800000000</approval_user_phone>" +
-                "    <so_ip>192.168.1.1</so_ip>" +
-                "    <script_content>" +
-                "     <![CDATA[脚本内容脚本内容]]>" +
-                "    </script_content>" +
-                "   </item>" +
-                "  </ddos>" +
-                "  <dns>" +
-                "   <item>" +
-                "    <item_id>1235</item_id>" +
-                "    <item_name>DNS劫持</item_name>" +
-                "    <approval_user_name>张三</approval_user_name>" +
-                "    <approval_user_phone>13800000000</approval_user_phone>" +
-                "    <so_ip>192.168.1.1</so_ip>" +
-                "    <script_content>" +
-                "     <![CDATA[脚本内容脚本内容]]>" +
-                "    </script_content>" +
-                "   </item>" +
-                "  </dns>" +
-                "  <msg>" +
-                "   <item>" +
-                "    <item_id>1236</item_id>" +
-                "    <item_name>MSG短信</item_name>" +
-                "    <approval_user_name>张三</approval_user_name>" +
-                "    <approval_user_phone>13800000000</approval_user_phone>" +
-                "    <so_ip>192.168.1.1</so_ip>" +
-                "    <script_content>" +
-                "     <![CDATA[脚本内容脚本内容]]>" +
-                "    </script_content>" +
-                "   </item>" +
-                "  </msg>" +
-                " </data_info>" +
+                "  <error_info>" +
+                "    <error_code>1000</error_code>" +
+                "    <error_desc/>" +
+                "  </error_info>" +
+                "  <data_info>" +
+                "    <page>" +
+                "      <item>" +
+                "        <item_id>20084</item_id>" +
+                "        <item_name>MISIC1</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "      <item>" +
+                "        <item_id>20085</item_id>" +
+                "        <item_name>MISIC2</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "      <item>" +
+                "        <item_id>20086</item_id>" +
+                "        <item_name>校讯通</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "    </page>" +
+                "    <cdn>" +
+                "      <item>" +
+                "        <item_id>20109</item_id>" +
+                "        <item_name>处置项名称</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "      <item>" +
+                "        <item_id>20111</item_id>" +
+                "        <item_name>处置项名称</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "      <item>" +
+                "        <item_id>20110</item_id>" +
+                "        <item_name>处置项名称</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "    </cdn>" +
+                "    <ddos>" +
+                "      <item>" +
+                "        <item_id>20100</item_id>" +
+                "        <item_name>处置项名称</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "      <item>" +
+                "        <item_id>20103</item_id>" +
+                "        <item_name>处置项名称</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "      <item>" +
+                "        <item_id>20102</item_id>" +
+                "        <item_name>处置项名称</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "      <item>" +
+                "        <item_id>20101</item_id>" +
+                "        <item_name>处置项名称</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "    </ddos>" +
+                "    <dns>" +
+                "      <item>" +
+                "        <item_id>20104</item_id>" +
+                "        <item_name>强解处理1</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "      <item>" +
+                "        <item_id>20105</item_id>" +
+                "        <item_name>重启Cache进程1</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "      <item>" +
+                "        <item_id>20106</item_id>" +
+                "        <item_name>重启Zlope进程1</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "    </dns>" +
+                "    <msg>" +
+                "      <item>" +
+                "        <item_id>20108</item_id>" +
+                "        <item_name>处置项名称</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "      <item>" +
+                "        <item_id>20107</item_id>" +
+                "        <item_name>处置项名称</item_name>" +
+                "        <approval_user_name/>" +
+                "        <approval_user_phone/>" +
+                "        <so_ip/>" +
+                "        <script_content/>" +
+                "      </item>" +
+                "    </msg>" +
+                "  </data_info>" +
                 "</root>";
     }
 
     public String handleItemByParams(String itemId, String[] params, String extendXml) {
+        long timeMillis = System.currentTimeMillis();
         return "<?xml version='1.0' encoding='UTF-8'?>" +
                 "<root>" +
                 " <error_info>" +
@@ -98,7 +160,7 @@ public class TianJinSomc {
                 "  <error_desc>错误描述错误描述</error_desc>" +
                 " </error_info>" +
                 " <data_info>" +
-                "  <task_id>12345</task_id>" +
+                "  <task_id>" + timeMillis + "</task_id>" +
                 " </data_info>" +
                 "</root>";
     }
