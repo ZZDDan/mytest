@@ -159,7 +159,7 @@ public class SortTest {
 
     @Test
     public void testQuickSort() {
-        int[] arr = {4, 6, 2, 9, 5, 8};
+        int[] arr = {2,4,9,3,6,7,1,5};
         System.out.println("排序前：" + printArr(arr));
         quicksort(arr, 0, arr.length - 1);
         System.out.println("排序后：" + printArr(arr));
