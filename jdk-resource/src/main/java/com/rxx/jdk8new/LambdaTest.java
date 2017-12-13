@@ -2,15 +2,12 @@ package com.rxx.jdk8new;
 
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.io.*;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -225,19 +222,170 @@ public class LambdaTest {
         System.out.println(sum01 + " " + sum02);
     }
 
+    @Test
     public void tet07_06() {
         // 字符串连接，concat = "ABCD"
-        String concat = Stream.of("A", "B", "C", "D").reduce("", String::concat);
+        String concat = Stream.of("A", "B", "C", "D").reduce("_", String::concat);
+        System.out.println("String::concat：" + concat);
         // 求最小值，minValue = -3.0
         double minValue = Stream.of(-1.5, 1.0, -3.0, -2.0).reduce(Double.MAX_VALUE, Double::min);
+        System.out.println("Double::min：" + minValue);
         // 求和，sumValue = 10, 有起始值
-        int sumValue = Stream.of(1, 2, 3, 4).reduce(0, Integer::sum);
+        int sumValue = Stream.of(1, 2, 3, 4).reduce(20, Integer::sum);
+        System.out.println("Integer::sum：" + sumValue);
         // 求和，sumValue = 10, 无起始值
         sumValue = Stream.of(1, 2, 3, 4).reduce(Integer::sum).get();
+        System.out.println("reduce(Integer::sum).get()：" + sumValue);
         // 过滤，字符串连接，concat = "ace"
         concat = Stream.of("a", "B", "c", "D", "e", "F").
                 filter(x -> x.compareTo("Z") > 0).
                 reduce("", String::concat);
+        System.out.println("Integer::sum：" + concat);
+    }
 
+    @Test
+    public void test07_07() {
+        List<Person> persons = new ArrayList();
+        for (int i = 1; i <= 10000; i++) {
+            Person person = new Person(i, "name" + i);
+            persons.add(person);
+        }
+        List<String> personList2 = persons.stream().
+                map(Person::getName).limit(5).skip(3).collect(Collectors.toList());
+        System.out.println(personList2);
+    }
+
+    private class Person {
+        public int no;
+        private String name;
+        private int age;
+
+        public Person(int no, String name) {
+            this.no = no;
+            this.name = name;
+        }
+
+        public Person(int no, String name, int age) {
+            this.no = no;
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+    }
+
+    @Test
+    public void test07_08() {
+        List<Person> persons = new ArrayList();
+        for (int i = 5; i > 0; i--) {
+            Person person = new Person(i, "name" + i);
+            persons.add(person);
+        }
+        List<String> personList2 = persons.stream()
+                .sorted(Comparator.comparing(Person::getName))
+                .limit(2).map(Person::getName).collect(Collectors.toList());
+        System.out.println(personList2);
+    }
+
+    @Test
+    public void test07_09() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("E:\\公司文件\\笔记\\周分享\\test.txt"));
+        int longest = br.lines().
+                mapToInt(String::length).
+                max().getAsInt();
+        br.close();
+        System.out.println(longest);
+    }
+
+    @Test
+    public void test07_10() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("E:\\公司文件\\笔记\\周分享\\test.txt"));
+        //找出全文的单词，转小写，并排序
+        List<String> words = br.lines().
+                flatMap(line -> Stream.of(line.split(" "))).
+                filter(word -> word.length() > 0).
+                map(String::toLowerCase).
+                distinct().
+                sorted().
+                collect(Collectors.toList());
+        br.close();
+        System.out.println(words);
+    }
+
+    @Test
+    public void test07_11() {
+        List<Person> persons = new ArrayList();
+        persons.add(new Person(1, "name" + 1, 10));
+        persons.add(new Person(2, "name" + 2, 21));
+        persons.add(new Person(3, "name" + 3, 34));
+        persons.add(new Person(4, "name" + 4, 6));
+        persons.add(new Person(5, "name" + 5, 55));
+
+        boolean isAllAdult = persons.stream().
+                allMatch(p -> p.getAge() > 18);
+        System.out.println("All are adult? " + isAllAdult);
+
+        boolean isThereAnyChild = persons.stream().
+                anyMatch(p -> p.getAge() < 12);
+        System.out.println("Any child? " + isThereAnyChild);
+    }
+
+    @Test
+    public void test_07_12() {
+        //生成10个随机数
+        Random seed = new Random();
+        Supplier<Integer> random = seed::nextInt;
+        Stream.generate(random).limit(5).forEach(System.out::println);
+        //Another way
+        IntStream.generate(() -> (int) (System.nanoTime() % 100)).
+                limit(5).forEach(System.out::println);
+    }
+
+    @Test
+    public void test07_13() {
+        Stream.generate(new PersonSupplier()).
+                limit(5).
+                forEach(p -> System.out.println(p.getName() + ", " + p.getAge()));
+    }
+
+    private class PersonSupplier implements Supplier<Person> {
+        private int index = 0;
+        private Random random = new Random();
+
+        @Override
+        public Person get() {
+            return new Person(index++, "StormTestUser" + index, random.nextInt(100));
+        }
+    }
+
+    @Test
+    public void test07_14() {
+        Stream.iterate(0, n -> n + 3).limit(5).forEach(x -> System.out.print(x + " "));
+    }
+
+    @Test
+    public void test07_15() {
+        //groupingBy/partitioningBy 按照年龄归组
+        Map<Integer, List<Person>> personGroups = Stream.generate(new PersonSupplier()).
+                limit(5).collect(Collectors.groupingBy(Person::getAge));
+        Iterator it = personGroups.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<Integer, List<Person>> persons = (Map.Entry) it.next();
+            System.out.println("Age " + persons.getKey() + " = " + persons.getValue().size());
+        }
+
+
+        //按照未成年人和成年人归组
+        Map<Boolean, List<Person>> children = Stream.generate(new PersonSupplier()).
+                limit(5).
+                collect(Collectors.partitioningBy(p -> p.getAge() < 18));
+        System.out.println("Children number: " + children.get(true).size());
+        System.out.println("Adult number: " + children.get(false).size());
     }
 }
