@@ -22,6 +22,12 @@
     </modules>
 
 	<properties>
+		<!-- build version-->
+		<jdk.version>1.8</jdk.version>
+		<mavenwarplugin.version>2.1.1</mavenwarplugin.version>
+		<mavenjettyplugin.version>6.1.10</mavenjettyplugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
 		<mytest.version>0.0.1-SNAPSHOT</mytest.version>
 		<spring.version>4.3.6.RELEASE</spring.version>
 		<junit.version>4.12</junit.version>
@@ -69,11 +75,6 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
