@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ wsdd文件标签节点说明：
+ deployment：表明这是一个axis部署描述文件；
+ service：axis提供的一个web service服务。service标签中parameter allowedMethod用于指定一个以空格分隔的方法名，只有这些方法可以通过web service访问。也可以将这个值指定为“*”表示所有的方法都可以访问。
+ provider：服务类型，共有四种，分别是RPC,Document,Wrapped和Message。详见org.apache.axis.providers包的API文档；
+ parameter：用来设置Axis的各种属性；
+ requestFlow：局的请求Handlers，在调用实际的服务之前调用；
+ transport：定义了服务器端的传输方式
+ -->
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+            xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+    <!-- 处理器 -->
+    <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+
+    <!-- 一个服务 -->
+    <!-- provider="java:RPC"  webservice是以javabean的形式提供的-->
+    <service name="handleService" provider="java:RPC">
+        <!-- 指定类名 -->
+        <parameter name="className" value="example.HelloWorld"/>
+        <!-- 类中允许访问的方法 -->
+        <parameter name="allowedMethod" value="*"></parameter>
+    </service>
+    <service name="handleServiceTJ" provider="java:RPC">
+        <parameter name="className" value="example.TianJinSomc"/>
+        <parameter name="allowedMethod" value="*"/>
+    </service>
+
+    <!-- 指定处理器 -->
+    <transport name="http">
+        <requestFlow>
+            <handler type="URLMapper"/><!-- 引用上边的 -->
+        </requestFlow>
+    </transport>
+
+</deployment>
+        <!--
+        <deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+          globalConfiguration 标签内容为系统默认 无需更改
+          <globalConfiguration>
+            <parameter name="sendMultiRefs" value="true"/>
+            <parameter name="disablePrettyXML" value="true"/>
+            <parameter name="adminPassword" value="admin"/>
+
+            <parameter name="dotNetSoapEncFix" value="true"/>
+            <parameter name="enableNamespacePrefixOptimization" value="false"/>
+            <parameter name="sendXMLDeclaration" value="true"/>
+            <parameter name="sendXsiTypes" value="true"/>
+            <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+            <requestFlow>
+              <handler type="java:org.apache.axis.handlers.JWSHandler">
+                <parameter name="scope" value="session"/>
+              </handler>
+              <handler type="java:org.apache.axis.handlers.JWSHandler">
+                <parameter name="scope" value="request"/>
+                <parameter name="extension" value=".jwr"/>
+              </handler>
+            </requestFlow>
+          </globalConfiguration>
+
+          <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+          <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+          <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+
+          <service name="AdminService" provider="java:MSG">
+            <parameter name="allowedMethods" value="AdminService"/>
+            <parameter name="enableRemoteAdmin" value="false"/>
+            <parameter name="className" value="org.apache.axis.utils.Admin"/>
+            <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+          </service>
+
+          <service name="Version" provider="java:RPC">
+            <parameter name="allowedMethods" value="getVersion"/>
+            <parameter name="className" value="org.apache.axis.Version"/>
+          </service>
+
+          <service name="SOAPMonitorService" provider="java:RPC">
+            <parameter name="allowedMethods" value="publishMessage"/>
+            <parameter name="scope" value="Application"/>
+            <parameter name="className" value="org.apache.axis.monitor.SOAPMonitorService"/>
+          </service>
+            service 标签是需要配置的，name 是url中需要的参数
+            <service name="handleService" provider="java:RPC" style="document" use="literal">
+                className的value值是类路径
+                <parameter name="className" value="example.HelloWorld"/>
+                <parameter name="allowedMethods" value="*"/>
+                allowedMethods 的value值是方法名 可以写*
+                <parameter name="scope" value="Application"/>
+                <namespace>http://example</namespace>
+            </service>
+            <handler name="soapmonitor" type="java:org.apache.axis.handlers.SOAPMonitorHandler">
+            <parameter name="wsdlURL" value="/axis/SOAPMonitorService-impl.wsdl"/>
+            <parameter name="serviceName" value="SOAPMonitorService"/>
+            <parameter name="namespace" value="http://tempuri.org/wsdl/2001/12/SOAPMonitorService-impl.wsdl"/>
+            <parameter name="portName" value="Demo"/>
+         </handler>
+          默认
+          <transport name="http">
+            <requestFlow>
+              <handler type="URLMapper"/>
+              <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+
+              &lt;!&ndash;comment following line for REMOVING wsdl spying via SOAPMonitor&ndash;&gt;
+              <handler type="soapmonitor"/>
+            </requestFlow>
+            <responseFlow>
+              &lt;!&ndash;comment following line for REMOVING wsdl spying via SOAPMonitor&ndash;&gt;
+              <handler type="soapmonitor"/>
+            </responseFlow>
+            <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+            <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+            <parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+            <parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+            <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+            <parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+          </transport>
+          <transport name="local">
+            <responseFlow>
+              <handler type="LocalResponder"/>
+            </responseFlow>
+          </transport>
+        </deployment>
+        -->
