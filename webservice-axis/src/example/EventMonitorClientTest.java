@@ -26,8 +26,8 @@ public class EventMonitorClientTest {
     @Test
     public void testClientByAxis(){
 
-        String endpoint = "http://localhost:8082/somcweb/services/handleService?wsdl";
-        String endpointTJ = "http://localhost:8082/somcweb/services/handleServiceTJ?wsdl";
+        String endpoint = "http://localhost:8082/services/handleService?wsdl";
+        String endpointTJ = "http://localhost:8082/services/handleServiceTJ?wsdl";
         // webservice地址
         System.out.println("HB-queryItems：" + invokeWS(endpoint, "queryItems", "webpage", null));
         System.out.println("HB-handleItemByParams：" + invokeWS(endpoint, "handleItemByParams", "1", "2", "3", null));

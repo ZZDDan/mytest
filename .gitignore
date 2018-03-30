@@ -46,3 +46,6 @@ integration-repo
 /webapp/WEB-INF/classes/
 /webapp/WEB-INF/test-classes/
 /webapp/WEB-INF/target/
+
+/classes
+/classes/*
