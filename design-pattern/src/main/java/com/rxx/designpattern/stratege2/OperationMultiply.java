@@ -1,4 +1,4 @@
-package com.rxx.designpattern.strateg2;
+package com.rxx.designpattern.stratege2;
 
 /**
  * @author :zhangdan
