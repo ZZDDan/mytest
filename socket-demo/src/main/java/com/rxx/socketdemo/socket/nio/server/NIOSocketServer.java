@@ -27,7 +27,7 @@ public class NIOSocketServer implements IOSocketServer {
         Selector selector = Selector.open();
         // 打开监听通道
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-        // true:此通道被设置被阻塞模式，false：此通道被设置为非阻塞模式
+        // 默认是阻塞的， true:此通道被设置被阻塞模式，false：此通道被设置为非阻塞模式
         serverSocketChannel.configureBlocking(false);
         // 绑定端口
         serverSocketChannel.socket().bind(new InetSocketAddress(addr, port), 1024);

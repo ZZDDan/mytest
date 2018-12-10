@@ -38,7 +38,9 @@ public class NIOSocketServerHandler implements Runnable {
                 Set<SelectionKey> selectedKeys = selector.selectedKeys();
                 Iterator<SelectionKey> iterator = selectedKeys.iterator();
                 while(iterator.hasNext()){
+                    // 有一个就处理一个
                     SelectionKey selectionKey = iterator.next();
+                    // 处理一个移除一个
                     iterator.remove();
                     try {
                         handlerInput(selectionKey);
@@ -66,7 +68,7 @@ public class NIOSocketServerHandler implements Runnable {
      */
     private void handlerInput(SelectionKey selectionKey) throws IOException {
         if(selectionKey.isValid()){
-            // 处理新接入的请求消息
+            // 处理新接入的请求消息，判断是否有客户建立连接
             if(selectionKey.isAcceptable()){
                 // 通过 ServerSocketChannel 的 accept 创建 ServerSocket 实例
                 ServerSocketChannel serverSocketChannel = (ServerSocketChannel)selectionKey.channel();
@@ -79,9 +81,9 @@ public class NIOSocketServerHandler implements Runnable {
                 socketChannel.configureBlocking(false);
                 // 注册为读
                 socketChannel.register(selector, SelectionKey.OP_READ);
-            }
-            
-            // 读消息
+            } else
+
+            // 判断是否可以读消息
             if(selectionKey.isReadable()){
                 SocketChannel socketChannel = (SocketChannel)selectionKey.channel();
                 // 创建 ByteBuffer，并且开辟一个 1M 的缓冲区
