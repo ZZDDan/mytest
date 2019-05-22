@@ -11,10 +11,22 @@
 
     <artifactId>socket-demo</artifactId>
 
+    <properties>
+        <!-- build version-->
+        <jdk.version>1.8</jdk.version>
+        <mavenwarplugin.version>2.1.1</mavenwarplugin.version>
+        <mavenjettyplugin.version>6.1.10</mavenjettyplugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <commons-lang3.version>3.5</commons-lang3.version>
+    </properties>
+
     <dependencies>
+        <!-- apache -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
         </dependency>
     </dependencies>
 

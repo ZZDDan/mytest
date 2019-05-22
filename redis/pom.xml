@@ -11,19 +11,38 @@
 
     <artifactId>redis</artifactId>
 
+    <properties>
+        <!-- build version-->
+        <jdk.version>1.8</jdk.version>
+        <mavenwarplugin.version>2.1.1</mavenwarplugin.version>
+        <mavenjettyplugin.version>6.1.10</mavenjettyplugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <log4j.version>1.2.17</log4j.version>
+        <commons-pool2.version>2.4.2</commons-pool2.version>
+        <jedis.version>2.8.1</jedis.version>
+    </properties>
+
     <dependencies>
+        <!-- log 日志 -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
+
+        <!-- Redis -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
+            <version>${commons-pool2.version}</version>
         </dependency>
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
         </dependency>
+
     </dependencies>
 
 
