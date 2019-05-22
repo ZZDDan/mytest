@@ -12,28 +12,49 @@
     <artifactId>websocket</artifactId>
     <packaging>war</packaging>
 
-    <dependencies>
+    <properties>
+        <!-- build version-->
+        <jdk.version>1.8</jdk.version>
+        <mavenwarplugin.version>2.1.1</mavenwarplugin.version>
+        <mavenjettyplugin.version>6.1.10</mavenjettyplugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <log4j.version>1.2.17</log4j.version>
+        <fastjson.version>1.1.41</fastjson.version>
+        <javax.servlet-api.version>3.0.1</javax.servlet-api.version>
+        <websocket.version>1.1</websocket.version>
+    </properties>
+
+    <dependencies>
+        <!-- log 日志 -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
 
+        <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
         </dependency>
 
+        <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+            <scope>provided</scope>
         </dependency>
 
+        <!-- websocket -->
         <dependency>
             <groupId>javax.websocket</groupId>
             <artifactId>javax.websocket-api</artifactId>
             <!-- 注意：下面这句话必须加上，否则客户端无法访问服务（似乎是服务没有启动） -->
             <scope>provided</scope>
+            <version>${websocket.version}</version>
         </dependency>
     </dependencies>
 

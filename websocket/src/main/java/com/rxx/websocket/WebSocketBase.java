@@ -28,13 +28,13 @@ public abstract class WebSocketBase {
      * @param currentSession
      */
     public void onOpen(Session currentSession) {
+        logger.debug("Server say：Client connected");
+
         if (sessionSet.contains(currentSession) == false) {
             sessionSet.add(currentSession);
-            logger.info("WebSocketTest.onOpen()================Add="
-                    + sessionSet.size());
+            logger.debug("WebSocketTest.onOpen()================Add=" + sessionSet.size());
         }
 
-        logger.info("Server say：Client connected");
     }
 
     /**
@@ -43,10 +43,13 @@ public abstract class WebSocketBase {
      * @param currentSession
      */
     public void onMessage(String message, Session currentSession) {
-        logger.info("Server say：Received: " + message);
+        logger.debug("Server say：Received: " + message);
+
         try {
-            final Set<Session> sessions = currentSession.getOpenSessions();// 获得有多少条连接
-            logger.info("检测到连接服务器是对象数量是" + sessions.size());
+            // 获得有多少条连接
+            final Set<Session> sessions = currentSession.getOpenSessions();
+            logger.debug("检测到连接服务器是对象数量是" + sessions.size());
+
             // 客户端关闭
             if ("close".equals(message)) {
                 currentSession.close();
@@ -61,10 +64,11 @@ public abstract class WebSocketBase {
      * @param currentSession
      */
     public void onClose(Session currentSession) {
+        logger.debug("Server say：Connection closed============Close=" + sessionSet.size());
+
         if (sessionSet.contains(currentSession)) {
             sessionSet.remove(currentSession);
         }
-        logger.info("Server say：Connection closed============Close=" + sessionSet.size());
 
     }
 
@@ -74,8 +78,8 @@ public abstract class WebSocketBase {
      * @param error
      */
     public void onError(Session currentSession, Throwable error){
+        logger.debug("Server say：Client error");
 
-        logger.info("Server say：Client error");
         if (sessionSet.contains(currentSession)) {
             sessionSet.remove(currentSession);
         }

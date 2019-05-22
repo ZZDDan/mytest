@@ -7,7 +7,6 @@ import javax.websocket.EncodeException;
 import javax.websocket.Encoder;
 import javax.websocket.EndpointConfig;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Title      :ServerEncoder
