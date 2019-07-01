@@ -41,7 +41,7 @@ class ListNode {
  *      链接：https://leetcode-cn.com/problems/add-two-numbers
  *      著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Solution {
+public class Solution2 {
 
     public static void main(String[] args) {
         ListNode l1 = new ListNode(2);
@@ -52,7 +52,7 @@ public class Solution {
         l2.next = new ListNode(6);
         l2.next.next = new ListNode(9);
 
-        Solution solution  = new Solution();
+        Solution2 solution  = new Solution2();
         ListNode ln = solution.addTwoNumbers(l1, l2);
         System.out.println(ln);
     }
