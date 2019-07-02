@@ -3,12 +3,15 @@
  * @Description:
  * @Company :
  * @date :2019/7/1 16:02
+ * 5. 最长回文子串
  * <p>
  * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+ * <p>
  * 示例 1：
  * 输入: "babad"
  * 输出: "bab"
  * 注意: "aba" 也是一个有效答案。
+ * <p>
  * 示例 2：
  * 输入: "cbbd"
  * 输出: "bb"
@@ -36,7 +39,7 @@ public class Solution5 {
                 if (a == b) {
                     m++;
                     n--;
-                } else if(m == i){
+                } else if (m == i) {
                     n--;
                 } else {
                     n += m - i - 1;
@@ -45,15 +48,15 @@ public class Solution5 {
             }
 
 
-            if(m != i){
+            if (m != i) {
                 int lpLen;
-                if(m == n){
+                if (m == n) {
                     lpLen = (m - i) * 2 + 1;
                 } else {
                     lpLen = (m - i) * 2;
                 }
 
-                if(lpLen > result.length()){
+                if (lpLen > result.length()) {
                     result = s.substring(i, lpLen + i);
                 }
             }
@@ -61,7 +64,7 @@ public class Solution5 {
             i++;
         }
 
-        if(result.length() == 0 && len > 0){
+        if (result.length() == 0 && len > 0) {
             result = s.substring(0, 1);
         }
 
