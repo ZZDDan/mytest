@@ -2,37 +2,6 @@
  * @author :zhangdan
  * @Description:
  * @Company :
- * @date :2019/6/25 16:03
- */
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-
-    @Override
-    public String toString() {
-        String str = "[";
-
-        ListNode ln = this;
-        while (ln != null) {
-            str += ln.val + ",";
-            ln = ln.next;
-        }
-        str = str.substring(0, str.length() - 1);
-
-        str += "]";
-
-        return str;
-    }
-}
-
-/**
- * @author :zhangdan
- * @Description:
- * @Company :
  * @date :2019/6/26 11:14
  * 2. 两数相加
  * <p>
@@ -46,6 +15,31 @@ class ListNode {
  * 原因：342 + 465 = 807
  */
 public class Solution2 {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+
+        @Override
+        public String toString() {
+            String str = "[";
+
+            ListNode ln = this;
+            while (ln != null) {
+                str += ln.val + ",";
+                ln = ln.next;
+            }
+            str = str.substring(0, str.length() - 1);
+
+            str += "]";
+
+            return str;
+        }
+    }
 
     public static void main(String[] args) {
         ListNode l1 = new ListNode(2);
