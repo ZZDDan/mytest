@@ -44,7 +44,7 @@
  */
 public class Solution8 {
     public static void main(String[] args) {
-        System.out.println(new Solution8().myAtoi("   - 0000000000000000000123000000000000000000000000000words and "));
+        System.out.println(new Solution8().myAtoi("-42"));
     }
 
     /**
@@ -53,71 +53,56 @@ public class Solution8 {
      * @return
      */
     public int myAtoi(String str) {
-
-        long result = 0;
-        char[] num = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-
-        boolean isFStart = false;
-        boolean isNumStart = false;
+        long s = 0;
+        int f = 1;
+        boolean start = true;
 
         int len = str.length();
 
-        int start = len;
-        int end = -1;
-
-        char r = '+';
-
         for (int i = 0; i < len; i++) {
             char c = str.charAt(i);
-            if(!(isFStart || isNumStart)){
-                if (' ' == c) {
-                    continue;
-                }
-
-                if('+' == c || '-' == c){
-                    isFStart = true;
-                    r = c;
-                    continue;
-                }
+            if(c == ' ' && start){
+                continue;
             }
 
-            int j = 0;
-            int numL = num.length;
-            while (j < numL) {
-
-                if (num[j] == c) {
-                    if (!isNumStart) {
-                        isNumStart = true;
-                    }
-                    if(start == len && c != '0'){
-                        start = i;
-                    }
-                    end = i;
-                    break;
-                }
-                j++;
+            if(c == '-' && start){
+                f = -1;
+                start = false;
+                continue;
             }
 
-            if (j >= numL) {
+            if(c == '+' && start){
+                start = false;
+                continue;
+            }
+
+            int num = c - '0';
+            if(num < 0 || num > 9){
                 break;
             }
+
+            if(num >= 0 && num <= 9){
+                if(start){
+                    start = false;
+                }
+
+                s = s * 10 + num;
+
+                if(s > Integer.MAX_VALUE){
+                    break;
+                }
+            }
         }
 
-        if(end - start > 11){
-            end = start + 11;
+        s = s * f;
+        if(s > Integer.MAX_VALUE){
+            return Integer.MAX_VALUE;
         }
 
-        if (start <= end) {
-            str = r + str.substring(start, end + 1);
-            result = Long.parseLong(str);
+        if(s < Integer.MIN_VALUE){
+            return Integer.MIN_VALUE;
         }
 
-        if(result > Integer.MAX_VALUE){
-            result = Integer.MAX_VALUE;
-        } else if(result < Integer.MIN_VALUE){
-            result = Integer.MIN_VALUE;
-        }
-
-        return (int) result;
+        return (int)s;
     }
 }
