@@ -30,30 +30,21 @@ public class Solution938 {
     }
 
     public int rangeSumBST(TreeNode root, int L, int R) {
-        int s = 0;
 
-        s = sumBST(root, L, R, s);
-
-        return s;
-    }
-
-    private int sumBST(TreeNode root, int L, int R, int s) {
         if(root == null){
-            return s;
+            return 0;
         }
+
         int v = root.val;
-
         if(v < L){
-            s = sumBST(root.right, L, R, s);
-        } else if(v > R){
-            s = sumBST(root.left, L, R, s);
-        } else {
-            s += v;
-            s = sumBST(root.left, L, R, s);
-            s = sumBST(root.right, L, R, s);
-
+            return rangeSumBST(root.right, L, R);
         }
 
-        return s;
+        if(v > R){
+            return rangeSumBST(root.left, L, R);
+        }
+
+        return v + rangeSumBST(root.left, L, R) + rangeSumBST(root.right, L, R);
     }
+
 }
