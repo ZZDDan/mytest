@@ -41,73 +41,66 @@ public class Solution809 {
         int wsl = words.length;
         int count = 0;
 
-
-        System.out.println(S);
-
+        char[] ss = S.toCharArray();
         for (int i = 0; i < wsl; i++) {
-            count += compare(S, words[i]);
-            System.out.println(count + " -> " + words[i]);
+            count += compare(ss, words[i].toCharArray());
         }
 
         return count;
     }
 
-    public int compare(String s, String word){
-        int sl = s.length();
-        int wl = word.length();
+    public int compare(char[] s, char[] w){
+        int sl = s.length;
+        int wl = w.length;
 
         // 如果 s 的长度小于 word+2，则直接返回
         if(sl - wl < 2){
             return 0;
         }
 
-        int sIndex = 0;
-        int count = 0;
-        boolean flag = false;
+        int i = 0;
+        int j = 0;
 
-        for (int i = 0; i < wl; i++) {
-            if(sIndex >= sl){
+        while(i < sl && j < wl){
+
+            // 如果不同，直接返回
+            if(s[i] != w[j]){
                 return 0;
             }
 
-            // 相等，取下一个字符进行比较
-            char scp = i > 0 ? s.charAt(sIndex - 1) : ' ';
-            char sc = s.charAt(sIndex ++);
-            char wc = word.charAt(i);
-
-            if(sc == wc){
-                if(scp == wc){
-                    flag = ++count > 2 ? true:flag;
-                } else {
-                    count = 1;
-                }
-                continue;
+            // 相同，S 后移找相同
+            int len1 = 1;
+            int m = i + 1;
+            while (m < sl && s[m] == s[i]){
+                len1 ++;
+                m ++;
             }
 
-            // 不相等，判断是否和上一个相同
-            //   不相等，return 0
-            if(i == 0 || scp != sc){
+            // 相同，word 后移找相同
+            int len2 = 1;
+            int n = j + 1;
+            while (n < wl && w[n] == w[j]){
+                len2 ++;
+                n ++;
+            }
+
+            // 如果 S 重复个数 与 Word 重复个数不同，说明存在扩展，
+            // 如果 S 重复个数 < Word 重复个数不同 或 S 重复个数 < 3，则不满足扩展规则
+            if(len1 != len2 && (len1 < len2 || len1 < 3)){
                 return 0;
             }
 
-            //   相等，判断是否存在至少3个
-            //       不足3个，return 0
-            do {
-                count ++;
-                sc = s.charAt(sIndex ++);
-            } while(scp == sc && sIndex < sl);
-
-            flag = count > 2;
-            if(!flag){
-                return 0;
-            }
-
-            // count 归 0,重新计数，i-- 继续比较word 当前的操作
-            count = 0;
-            i-- ;
-            sIndex--;
+            // 重新制定 i,j 的位置
+            i = m;
+            j = n;
 
         }
-        return flag ? 1 : 0;
+
+        // 如果存在 S 或 Word 遍历不完整，则说明不满足扩展规则
+        if(i < sl || j < wl){
+            return 0;
+        }
+
+        return 1;
     }
 }
